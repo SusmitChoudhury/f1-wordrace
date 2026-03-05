@@ -44,7 +44,6 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ room, onRematch, myPlayerId
     // And to break ties, we use WPM.
 
     let winner: PlayerInfo | null = null;
-    let bestScore = -99999;
 
     // Let's calculate a score where higher WPM is good, but penalties are bad.
     // Formula: Adjusted Score = WPM - (Mistakes * 1.5)
