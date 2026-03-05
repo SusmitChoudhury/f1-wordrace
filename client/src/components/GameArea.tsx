@@ -7,8 +7,7 @@ import TypingArea from './TypingArea';
 import RaceTrack from './RaceTrack';
 import ResultScreen from './ResultScreen';
 
-const SERVER_URL = 'http://localhost:3001';
-
+const SERVER_URL = 'https://f1-wordrace.onrender.com';
 const GameArea: React.FC = () => {
     const { roomId } = useParams<{ roomId: string }>();
     const [searchParams] = useSearchParams();
