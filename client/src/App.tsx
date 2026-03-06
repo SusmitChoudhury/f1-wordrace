@@ -1,17 +1,45 @@
-
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import GameArea from './components/GameArea';
 
+const ScrollToSection = () => {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (pathname === '/' && hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [pathname, hash]);
+
+  return null;
+};
+
 function App() {
   return (
     <Router>
+      <ScrollToSection />
       <div className="app-container">
-        <header style={{ padding: '1.5rem 2rem', borderBottom: '1px solid var(--border)' }}>
-          <h1 className="heading-3" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <header style={{ padding: '1rem 2rem', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'var(--surface)' }}>
+          <h1 className="heading-3" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
             <span style={{ color: 'var(--primary)', fontStyle: 'italic', fontWeight: 800 }}>FI</span> WordRace
           </h1>
+
+          <nav style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+            <Link to="/#home" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
+            <Link to="/#how-it-works" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 600 }}>How It Works</Link>
+            <Link to="/#features" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 600 }}>Features</Link>
+            <Link to="/#about" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 600 }}>About</Link>
+            <span style={{ width: '1px', height: '24px', background: 'var(--border)', margin: '0 0.5rem' }}></span>
+            <Link to="/multiplayer" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>Multiplayer</Link>
+            <Link to="/multiplayer" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>Single Player</Link>
+          </nav>
         </header>
 
         <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
