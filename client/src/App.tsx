@@ -1,5 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import GameArea from './components/GameArea';
 
@@ -15,7 +16,8 @@ function App() {
 
         <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/multiplayer" element={<Home />} />
             <Route path="/room/:roomId" element={<GameArea />} />
           </Routes>
         </main>
@@ -32,8 +34,8 @@ function App() {
             {/* Center: Quick Links */}
             <div style={{ display: 'flex', gap: '2rem' }}>
               <Link to="/" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 600, transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--text-main)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Home</Link>
-              <Link to="/" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 600, transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--text-main)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Multiplayer</Link>
-              <Link to="/" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 600, transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--text-main)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Single Player</Link>
+              <Link to="/multiplayer" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 600, transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--text-main)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Multiplayer</Link>
+              <Link to="/multiplayer" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 600, transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--text-main)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Single Player</Link>
             </div>
 
             {/* Right Side: Copyright */}
